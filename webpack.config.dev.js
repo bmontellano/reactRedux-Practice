@@ -1,11 +1,21 @@
 import path from 'path'
+import webpack from 'webpack'
 
 export default {
   devtool: 'eval-source-map',
-  entry: path.join(__dirname, '/client/index.js'),
+  entry: [
+    'webpack-hot-middleware/client',
+    path.join(__dirname, '/client/index.js')
+],
   output: {
-    path: '/'
+    path: '/',
+    publicPath: '/'
   },
+  plugins: [
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
     loaders: [
       {
@@ -16,6 +26,7 @@ export default {
     ]
   },
   resolve: {
+    alias: { 'react/lib/ReactMount': 'react-dom/lib/ReactMount'},
     extensions: ['*', '.js']
   }
 }
