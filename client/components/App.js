@@ -4,7 +4,10 @@ import Greetings from './Greetings'
 class App extends React.Component {
   render(){
     return(
-      <Greetings />
+      <div className="container">
+      <NavigationBar />
+      {this.props.children}
+      </div>
     )
   }
 }

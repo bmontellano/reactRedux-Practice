@@ -23,6 +23,7 @@
     "express": "^4.15.5",
     "path": "^0.12.7",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-router": "^4.2.0"
   }
 }
