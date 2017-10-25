@@ -1,14 +1,34 @@
 import React from 'react'
 
 class SignupForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: ''
+    }
+
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  onChange(e){
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  onSubmit(e){
+    e.preventDefault()
+    console.log(this.state)
+  }
   render() {
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
         <h1>Join our community!</h1>
 
         <div className="form-group">
           <label className="control-label">Username</label>
           <input
+            value={this.state.username}
+            onChage={this.onChange}
             type="text"
             name="username"
             className="form-control"
@@ -19,11 +39,6 @@ class SignupForm extends React.Component {
           <button className="btn btn-primatry btn-lg">
             Sign up
           </button>
-          <input
-            type="text"
-            name="username"
-            className="form-control"
-          />
         </div>
       </form>
     )
